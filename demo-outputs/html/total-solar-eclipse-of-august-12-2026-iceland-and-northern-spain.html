@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!-- direction: celestial mechanics diagram — pale arctic dawn meets deep umbral black, scientific almanac plotting, corona-orange accents -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Total Solar Eclipse of August 12, 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,400&family=Spline+Sans+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --void:#08090d;
+  --umbra:#13151f;
+  --dawn:#e8e3d8;
+  --pale:#c7c4ba;
+  --corona:#ff7a3c;
+  --gold:#ffc371;
+  --ice:#7ea6c4;
+  --line:rgba(199,196,186,.18);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--void);
+  color:var(--dawn);
+  font-family:'Spline Sans Mono',monospace;
+  font-size:15px;
+  line-height:1.6;
+  overflow-x:hidden;
+  background-image:
+    radial-gradient(circle at 72% 18%, rgba(255,122,60,.10), transparent 40%),
+    radial-gradient(circle at 20% 80%, rgba(126,166,196,.08), transparent 45%),
+    radial-gradient(circle at 50% 0%, #1a1c28, var(--void) 60%);
+}
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+
+/* corona disc hero */
+.hero{position:relative;padding:90px 0 60px;overflow:hidden}
+.disc{
+  position:absolute;top:-80px;right:-120px;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle, var(--void) 38%, var(--corona) 39%, var(--gold) 41%, transparent 56%);
+  box-shadow:0 0 120px 30px rgba(255,122,60,.25);
+  opacity:.85;pointer-events:none;
+  animation:rise 1.6s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes rise{from{transform:translateY(40px) scale(.85);opacity:0}to{transform:none;opacity:.85}}
+.badge{
+  display:inline-flex;gap:10px;align-items:center;
+  font-size:11px;letter-spacing:.32em;text-transform:uppercase;
+  border:1px solid var(--line);padding:7px 14px;border-radius:2px;color:var(--ice);
+}
+.status{
+  display:inline-block;margin-left:12px;background:var(--corona);color:var(--void);
+  padding:7px 14px;font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;border-radius:2px;
+  box-shadow:0 0 28px rgba(255,122,60,.5);
+}
+h1{
+  font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2.5rem,7vw,5.4rem);
+  line-height:1.02;letter-spacing:-.02em;margin:30px 0 8px;max-width:14ch;
+}
+h1 em{font-style:italic;color:var(--gold)}
+.meta{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--pale);margin:18px 0 26px}
+.summary{max-width:62ch;font-size:1.06rem;color:var(--pale);line-height:1.75}
+.summary .first{color:var(--dawn)}
+
+/* section heads */
+.sec{padding:64px 0;border-top:1px solid var(--line);position:relative}
+.kicker{
+  font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--corona);
+  display:flex;align-items:center;gap:14px;margin-bottom:34px;
+}
+.kicker::before{content:'';width:32px;height:1px;background:var(--corona)}
+.kicker::after{content:'';flex:1;height:1px;background:var(--line)}
+
+/* key facts ledger */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.fact{background:var(--umbra);padding:24px 22px;animation:fade .6s both;animation-delay:calc(var(--i)*70ms)}
+.fact .lab{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ice);margin-bottom:10px}
+.fact .val{font-family:'Fraunces',serif;font-size:1.18rem;line-height:1.35;color:var(--dawn)}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* path plot — totality comparison */
+.plot{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.loc{
+  border:1px solid var(--line);padding:26px;position:relative;background:linear-gradient(160deg,var(--umbra),rgba(19,21,31,.4));
+  animation:fade .6s both;animation-delay:calc(var(--i)*90ms);
+}
+.loc .city{font-family:'Fraunces',serif;font-size:1.7rem;color:var(--gold)}
+.loc .reg{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ice);margin-bottom:18px}
+.loc .dur{font-size:2.4rem;font-family:'Fraunces',serif;font-weight:300;color:var(--corona);line-height:1}
+.loc .durlab{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--pale);margin-top:6px}
+.loc .start{font-size:13px;color:var(--pale);margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+
+/* timeline */
+.tl{position:relative;padding-left:30px}
+.tl::before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:linear-gradient(var(--corona),var(--ice))}
+.event{position:relative;padding:0 0 38px 22px;animation:fade .6s both;animation-delay:calc(var(--i)*120ms)}
+.event::before{content:'';position:absolute;left:-30px;top:5px;width:13px;height:13px;border-radius:50%;background:var(--void);border:2px solid var(--corona)}
+.event .d{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--corona);margin-bottom:7px}
+.event p{color:var(--pale);max-width:64ch}
+
+/* entities */
+.ents{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.ent{background:var(--umbra);padding:22px;animation:fade .5s both;animation-delay:calc(var(--i)*60ms)}
+.ent .nm{font-family:'Fraunces',serif;font-size:1.15rem;color:var(--dawn)}
+.ent .ty{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--corona);float:right;border:1px solid var(--line);padding:2px 7px;border-radius:2px}
+.ent .ro{font-size:12.5px;color:var(--pale);margin-top:10px;clear:both}
+
+/* sources */
+.srcs{display:grid;gap:0}
+.src{
+  display:flex;justify-content:space-between;gap:20px;align-items:baseline;
+  padding:15px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--dawn);
+  transition:.25s;animation:fade .4s both;animation-delay:calc(var(--i)*40ms);
+}
+.src:hover{background:rgba(255,122,60,.06);padding-left:14px}
+.src .t{flex:1;font-size:.95rem}
+.src .p{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ice);white-space:nowrap}
+.src .arr{color:var(--corona)}
+
+footer{padding:50px 0 70px;text-align:center;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--pale)}
+
+@media(max-width:600px){
+  .disc{width:340px;height:340px;top:-40px;right:-90px}
+  .hero{padding:60px 0 40px}
+  .status{display:block;margin:14px 0 0}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="disc"></div>
+    <span class="badge">◐ Celestial Event · Solar Eclipse</span>
+    <span class="status">Upcoming · in 60 days</span>
+    <h1>Total Solar Eclipse <em>of August 12, 2026</em></h1>
+    <p class="meta">Iceland &amp; Northern Spain — Last updated 2026·06·13</p>
+    <p class="summary"><span class="first">A total solar eclipse will trace a narrow path of totality on August 12, 2026, crossing Siberian Russia, eastern Greenland, the west coast of Iceland, northern Spain, and a tiny section of Portugal.</span> Iceland and Spain account for the vast majority of the population along the path, with this being the first total solar eclipse visible from mainland Spain since 1905. It will be the first of three solar eclipses visible from Spain between 2026 and 2028.</p>
+  </header>
+
+  <section class="sec">
+    <div class="kicker">Almanac · Key Facts</div>
+    <div class="facts">
+      <div class="fact" style="--i:0"><div class="lab">Eclipse date</div><div class="val">August 12, 2026</div></div>
+      <div class="fact" style="--i:1"><div class="lab">Path of totality regions</div><div class="val">Siberian Russia, eastern Greenland, west coast of Iceland, northern Spain, and a tiny section of Portugal</div></div>
+      <div class="fact" style="--i:2"><div class="lab">First mainland Spain total eclipse since</div><div class="val">First total solar eclipse visible from mainland Spain since 1905</div></div>
+      <div class="fact" style="--i:3"><div class="lab">Totality · Ísafjörður, Iceland</div><div class="val">About 1 minute 30 seconds, starting around 5:44 PM GMT</div></div>
+      <div class="fact" style="--i:4"><div class="lab">Totality · A Coruña, Spain</div><div class="val">About 1 minute 16 seconds, starting around 8:27 PM CEST</div></div>
+      <div class="fact" style="--i:5"><div class="lab">Longest mainland Iceland duration</div><div class="val">At Látrabjarg in the Westfjords, totality lasts 2 minutes 13 seconds</div></div>
+      <div class="fact" style="--i:6"><div class="lab">Reykjavik eclipse start</div><div class="val">The moon starts to touch the sun's edge at 4:47pm in Reykjavik</div></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="kicker">Along the Umbra · Totality Plot</div>
+    <div class="plot">
+      <div class="loc" style="--i:0">
+        <div class="city">Ísafjörður</div>
+        <div class="reg">Westfjords · Iceland</div>
+        <div class="dur">1m 30s</div><div class="durlab">Totality</div>
+        <div class="start">First landfall of the umbra · ~5:44 PM GMT · largest town in Iceland's path</div>
+      </div>
+      <div class="loc" style="--i:1">
+        <div class="city">Látrabjarg</div>
+        <div class="reg">Westfjords · Iceland</div>
+        <div class="dur">2m 13s</div><div class="durlab">Longest mainland Iceland</div>
+        <div class="start">The deepest totality on mainland Iceland, at the country's westernmost cliffs.</div>
+      </div>
+      <div class="loc" style="--i:2">
+        <div class="city">Reykjavik</div>
+        <div class="reg">Capital · Iceland</div>
+        <div class="dur">4:47<span style="font-size:1rem">pm</span></div><div class="durlab">First contact</div>
+        <div class="start">The Moon begins to touch the Sun's edge over the Icelandic capital.</div>
+      </div>
+      <div class="loc" style="--i:3">
+        <div class="city">A Coruña</div>
+        <div class="reg">Galicia · Spain</div>
+        <div class="dur">1m 16s</div><div class="durlab">Totality</div>
+        <div class="start">Near the western edge of the Spanish path · ~8:27 PM CEST</div>
+      </div>
+      <div class="loc" style="--i:4">
+        <div class="city">Palma de Mallorca</div>
+        <div class="reg">Balearic Islands · Spain</div>
+        <div class="dur">~2m</div><div class="durlab">Totality up to</div>
+        <div class="start">Island totality up to about two minutes in the Mediterranean.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="kicker">Sequence of Shadow · Timeline</div>
+    <div class="tl">
+      <div class="event" style="--i:0">
+        <div class="d">2026 · Aug 12</div>
+        <p>A total solar eclipse traces a narrow path of totality across Siberian Russia, eastern Greenland, the west coast of Iceland, northern Spain, and a tiny section of Portugal.</p>
+      </div>
+      <div class="event" style="--i:1">
+        <div class="d">2026 · Aug 12 · Iceland</div>
+        <p>In Reykjavik, the moon begins to touch the sun's edge at 4:47pm; the Moon's umbral shadow first makes landfall in the Westfjords of Iceland, with Ísafjörður seeing totality around 5:44 PM GMT.</p>
+      </div>
+      <div class="event" style="--i:2">
+        <div class="d">2026 · Aug 12 · Spain</div>
+        <p>The shadow continues to northern Spain, where A Coruña gets about 1 minute 16 seconds of totality starting around 8:27pm CEST.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="kicker">Observers &amp; Waypoints · Entities</div>
+    <div class="ents">
+      <div class="ent" style="--i:0"><span class="ty">Org</span><div class="nm">European Space Agency</div><div class="ro">Organization offering in-person and online coverage of the eclipse.</div></div>
+      <div class="ent" style="--i:1"><span class="ty">Loc</span><div class="nm">Iceland</div><div class="ro">Country in the path of totality (Westfjords region).</div></div>
+      <div class="ent" style="--i:2"><span class="ty">Loc</span><div class="nm">Spain</div><div class="ro">Country in the path of totality (northern Spain, Balearic Islands).</div></div>
+      <div class="ent" style="--i:3"><span class="ty">Loc</span><div class="nm">Ísafjörður</div><div class="ro">Largest town in the Iceland path of totality.</div></div>
+      <div class="ent" style="--i:4"><span class="ty">Loc</span><div class="nm">A Coruña</div><div class="ro">City near the western edge of the Spanish path of totality.</div></div>
+      <div class="ent" style="--i:5"><span class="ty">Loc</span><div class="nm">Reykjavik</div><div class="ro">Icelandic capital where the eclipse begins at 4:47pm.</div></div>
+      <div class="ent" style="--i:6"><span class="ty">Loc</span><div class="nm">Látrabjarg</div><div class="ro">Site with the longest mainland Iceland totality (2m 13s).</div></div>
+      <div class="ent" style="--i:7"><span class="ty">Loc</span><div class="nm">Palma de Mallorca</div><div class="ro">Balearic location with totality up to about 2 minutes.</div></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="kicker">Related Coverage · Sources</div>
+    <div class="srcs">
+      <a class="src" style="--i:0" href="https://nationaleclipse.com/maps/main/2026-total-solar-eclipse-maps.html"><span class="t">2026 Total Solar Eclipse Maps for Iceland and Spain</span><span class="p">nationaleclipse.com</span><span class="arr">↗</span></a>
+      <a class="src" style="--i:1" href="https://poseidonexpeditions.com/about/articles/solar-eclipse"><span class="t">2026 Total Solar Eclipse: Complete Guide and Best Viewing Locations</span><span class="p">poseidonexpeditions.com</span><span class="arr">↗</span></a>
+      <a class="src" style="--i:2" href="https://nso.edu/for-public/eclipse-map-2026"><span class="t">August 12, 2026 Solar Eclipse Map — NSO</span><span class="p">nso.edu</span><span class="arr">↗</span></a>
+      <a class="src" style="--i:3" href="https://www.eclipseglasses.com/pages/spain-and-iceland-2026-total-eclipse"><span class="t">Spain and Iceland (2026 Total Eclipse)</span><span class="p">eclipseglasses.com</span><span class="arr">↗</span></a>
+      <a class="src" style="--i:4" href="https://www.weroad.com/blog/solar-eclipse-2026"><span class="t">Solar Eclipse 2026: Path, Date &amp; Best Places to See It</span><span class="p">weroad.com</span><span class="arr">↗</span></a>
+      <a class="src" style="--i:5" href="https://nationaleclipse.com/cities/lists/2026-total-solar-eclipse-cities.html"><span class="t">2026 Total Solar Eclipse City Data for Iceland and Spain</span><span class="p">nationaleclipse.com</span><span class="arr">↗</span></a>
+      <a class="src" style="--i:6" href="https://www.esa.int/Science_Exploration/Space_Science/Join_ESA_for_a_total_solar_eclipse_on_12_August_2026"><span class="t">Join ESA for a total solar eclipse on 12 August 2026</span><span class="p">esa.int</span><span class="arr">↗</span></a>
+      <a class="src" style="--i:7" href="https://eclipsophile.com/tse2026"><span class="t">Total Solar Eclipse 2026 August 12 | Eclipsophile</span><span class="p">eclipsophile.com</span><span class="arr">↗</span></a>
+      <a class="src" style="--i:8" href="https://eclipse2026.is/where-to-see"><span class="t">Where to see the total solar eclipse of August 12, 2026?</span><span class="p">eclipse2026.is</span><span class="arr">↗</span></a>
+      <a class="src" style="--i:9" href="https://nationaleclipse.com/overviews/2026-total-solar-eclipse-overview.html"><span class="t">2026 Total Solar Eclipse Overview for Iceland and Spain</span><span class="p">nationaleclipse.com</span><span class="arr">↗</span></a>
+      <a class="src" style="--i:10" href="https://expatexplore.com/blog/blog-solar-eclipse-in-spain-2026"><span class="t">Solar Eclipse in Spain 2026 — Best Places to See It</span><span class="p">expatexplore.com</span><span class="arr">↗</span></a>
+      <a class="src" style="--i:11" href="https://whenisthenexteclipse.com/where-to-watch-the-2026-total-solar-eclipse-in-spain"><span class="t">Where to watch the 2026 total solar eclipse in Spain</span><span class="p">whenisthenexteclipse.com</span><span class="arr">↗</span></a>
+      <a class="src" style="--i:12" href="https://en.wikipedia.org/wiki/Solar_eclipse_of_August_12,_2026"><span class="t">Solar eclipse of August 12, 2026 — Wikipedia</span><span class="p">en.wikipedia.org</span><span class="arr">↗</span></a>
+    </div>
+  </section>
+
+  <footer>◑ Totality begins · 12 August 2026 ◐</footer>
+</div>
+
+</body>
+</html>

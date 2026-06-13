@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!-- direction: clinical "model spec sheet" — laboratory-white precision instrument, signal-orange accent, monospaced data telemetry, blueprint grid -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GPT-5.5 Instant · Default Model Spec</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --paper:#f4f3ee;
+  --ink:#16140f;
+  --grid:#dad7cc;
+  --signal:#ff4d1c;
+  --teal:#0a6b5f;
+  --dim:#76726a;
+  --line:#c5c1b6;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:15px;
+  line-height:1.55;
+  background-image:
+    linear-gradient(var(--grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:42px 42px;
+  background-position:-1px -1px;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* stagger */
+.stagger>*{opacity:0;transform:translateY(14px);animation:rise .6s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i,0)*70ms)}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* header bar */
+.topbar{display:flex;justify-content:space-between;align-items:center;
+  border-bottom:2px solid var(--ink);padding:14px 0;flex-wrap:wrap;gap:10px}
+.topbar .mark{font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:13px}
+.topbar .meta{font-size:12px;color:var(--dim);letter-spacing:.04em}
+
+/* status */
+.status{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:var(--paper);
+  padding:7px 16px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin:34px 0 6px}
+.status .dot{width:8px;height:8px;background:var(--signal);border-radius:50%}
+
+/* hero */
+.hero{padding:8px 0 50px;border-bottom:2px solid var(--ink);position:relative}
+.badge{display:inline-block;background:var(--signal);color:#fff;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;padding:4px 12px;font-weight:600}
+.hero h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2.6rem,7.5vw,6rem);
+  line-height:.95;letter-spacing:-.02em;margin:18px 0 22px;max-width:14ch}
+.hero h1 em{font-style:italic;color:var(--signal)}
+.summary{max-width:60ch;font-size:16px;color:#2b2820;line-height:1.7}
+.hero .ver{position:absolute;right:0;top:60px;font-family:'Fraunces',serif;font-weight:900;
+  font-size:clamp(3rem,11vw,9rem);color:var(--line);line-height:.8;text-align:right;letter-spacing:-.03em;z-index:-1;opacity:.55}
+
+/* section heading */
+.sec{padding:54px 0;border-bottom:1px solid var(--line)}
+.sec-h{display:flex;align-items:baseline;gap:14px;margin-bottom:30px}
+.sec-h .num{font-size:12px;color:var(--signal);font-weight:600;letter-spacing:.1em}
+.sec-h h2{font-family:'Fraunces',serif;font-weight:600;font-size:1.9rem;letter-spacing:-.01em}
+
+/* key facts ledger */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.fact{background:var(--paper);padding:22px 20px}
+.fact .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+.fact .val{font-size:14.5px;line-height:1.5}
+.fact .big{font-family:'Fraunces',serif;font-weight:900;font-size:2.6rem;color:var(--signal);line-height:1}
+
+/* features */
+.feats{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.feat{background:var(--paper);padding:20px;display:grid;grid-template-columns:30px 1fr;gap:18px;align-items:start}
+.feat .idx{font-family:'Fraunces',serif;font-weight:900;color:var(--line);font-size:1.6rem}
+.feat:hover{background:#fbfaf5}
+.feat:hover .idx{color:var(--signal)}
+.feat h3{font-size:15px;font-weight:600;margin-bottom:4px}
+.feat p{color:#403c33;font-size:14px}
+
+/* benchmark bars */
+.bench{display:grid;gap:18px;margin-top:24px}
+.bar-row{display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:center}
+.bar-row .nm{font-size:13px}
+.track{background:#e4e1d8;height:30px;position:relative;border:1px solid var(--line)}
+.fill{position:absolute;top:0;left:0;height:100%;display:flex;align-items:center;padding-right:8px;justify-content:flex-end;font-size:11px;color:#fff;font-weight:600}
+.fill.old{background:var(--dim);z-index:1}
+.fill.new{background:var(--signal);z-index:2}
+.legend{display:flex;gap:20px;font-size:11px;color:var(--dim);margin-top:8px;text-transform:uppercase;letter-spacing:.08em}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.swatch{width:11px;height:11px}
+
+/* pricing + callout */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.price-tbl{border:1px solid var(--line)}
+.price-tbl .row{display:flex;justify-content:space-between;padding:16px 18px;border-bottom:1px solid var(--line)}
+.price-tbl .row:last-child{border-bottom:none}
+.price-tbl .row .t{color:var(--dim);font-size:13px}
+.price-tbl .row .p{font-weight:600;color:var(--teal)}
+.callout{background:var(--ink);color:var(--paper);padding:26px}
+.callout h4{font-family:'Fraunces',serif;font-weight:600;color:var(--signal);font-size:1.1rem;margin-bottom:12px}
+.callout p{font-size:13.5px;line-height:1.65;color:#d6d2c8;margin-bottom:14px}
+.callout p:last-child{margin-bottom:0}
+
+/* timeline */
+.tl{position:relative;padding-left:24px}
+.tl::before{content:"";position:absolute;left:4px;top:6px;bottom:6px;width:2px;background:var(--ink)}
+.tl-item{position:relative;padding:0 0 26px 26px}
+.tl-item::before{content:"";position:absolute;left:-23px;top:5px;width:11px;height:11px;background:var(--paper);border:2px solid var(--signal);border-radius:50%}
+.tl-item .d{font-size:12px;color:var(--signal);font-weight:600;letter-spacing:.06em}
+.tl-item p{font-size:14px;color:#3a362d;margin-top:4px;max-width:70ch}
+
+/* entities */
+.ent{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.ent-card{border:1px solid var(--line);padding:20px;background:var(--paper)}
+.ent-card .ty{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--signal)}
+.ent-card .nm{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;margin:6px 0 8px}
+.ent-card .rl{font-size:13px;color:var(--dim)}
+
+/* sources */
+.src{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.src a{background:var(--paper);padding:16px 20px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;
+  text-decoration:none;color:var(--ink)}
+.src a:hover{background:var(--ink);color:var(--paper)}
+.src a:hover .pub{color:var(--signal)}
+.src .ti{font-size:13.5px;line-height:1.4}
+.src .pub{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:4px}
+.src .dt{font-size:12px;color:var(--dim);white-space:nowrap}
+.src a:hover .dt{color:#bbb}
+
+footer{padding:40px 0 60px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);text-align:center}
+
+@media(max-width:680px){
+  .split{grid-template-columns:1fr}
+  .bar-row{grid-template-columns:1fr}
+  .hero .ver{display:none}
+  .feat{grid-template-columns:1fr}
+  .feat .idx{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="mark">OpenAI · Model Spec Sheet</div>
+    <div class="meta">REF GPT-5.5-INSTANT · LAST UPDATED 2026-06-13</div>
+  </div>
+
+  <header class="hero">
+    <div class="ver">5.5</div>
+    <div class="status"><span class="dot"></span>Concluded · Rolled out 39 days ago</div><br>
+    <span class="badge">Tech / Model Release</span>
+    <h1>GPT-5.5 Instant is now <em>default</em>.</h1>
+    <p class="summary">OpenAI made GPT-5.5 Instant the new default ChatGPT model on May 5, 2026, replacing GPT-5.3 Instant across all user tiers. The model delivers 52.5% fewer hallucinated claims on high-stakes prompts, improved math and reasoning benchmarks, more concise answers, and a new auditable memory feature with sources.</p>
+  </header>
+
+  <section class="sec">
+    <div class="sec-h"><span class="num">01</span><h2>Key Specifications</h2></div>
+    <div class="facts stagger">
+      <div class="fact" style="--i:0"><div class="lbl">Release date</div><div class="val">May 5, 2026</div></div>
+      <div class="fact" style="--i:1"><div class="lbl">Hallucination reduction</div><div class="big">52.5%</div><div class="val">fewer hallucinated claims than GPT-5.3 Instant on high-stakes prompts (medicine, law, finance)</div></div>
+      <div class="fact" style="--i:2"><div class="lbl">Replaces</div><div class="val">GPT-5.3 Instant across all user tiers</div></div>
+      <div class="fact" style="--i:3"><div class="lbl">AIME 2025 math</div><div class="big">81.2</div><div class="val">up from 65.4 for GPT-5.3 Instant</div></div>
+      <div class="fact" style="--i:4"><div class="lbl">MMMU-Pro</div><div class="big">76</div><div class="val">up from 69.2</div></div>
+      <div class="fact" style="--i:5"><div class="lbl">API pricing</div><div class="val">$5.00 / M input tokens<br>$30.00 / M output tokens</div></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><span class="num">02</span><h2>Features</h2></div>
+    <div class="feats stagger">
+      <div class="feat" style="--i:0"><div class="idx">01</div><div><h3>Improved factuality</h3><p>52.5% fewer hallucinated claims than GPT-5.3 Instant on high-stakes prompts in medicine, law, and finance.</p></div></div>
+      <div class="feat" style="--i:1"><div class="idx">02</div><div><h3>Concise answers</h3><p>Replies are shorter and more concise without becoming cold.</p></div></div>
+      <div class="feat" style="--i:2"><div class="idx">03</div><div><h3>Memory with sources</h3><p>New auditable memory feature that attaches sources to remembered information.</p></div></div>
+      <div class="feat" style="--i:3"><div class="idx">04</div><div><h3>Better image analysis</h3><p>Improved at image analysis compared to its predecessor.</p></div></div>
+      <div class="feat" style="--i:4"><div class="idx">05</div><div><h3>Improved math and reasoning</h3><p>Scores 81.2 on AIME 2025 (up from 65.4) and 76 on MMMU-Pro (up from 69.2).</p></div></div>
+    </div>
+
+    <div class="bench" style="margin-top:40px">
+      <div class="bar-row">
+        <div class="nm">AIME 2025</div>
+        <div>
+          <div class="track" style="margin-bottom:5px"><div class="fill old" style="width:65.4%">5.3 · 65.4</div></div>
+          <div class="track"><div class="fill new" style="width:81.2%">5.5 · 81.2</div></div>
+        </div>
+      </div>
+      <div class="bar-row">
+        <div class="nm">MMMU-Pro</div>
+        <div>
+          <div class="track" style="margin-bottom:5px"><div class="fill old" style="width:69.2%">5.3 · 69.2</div></div>
+          <div class="track"><div class="fill new" style="width:76%">5.5 · 76</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--dim)"></span>GPT-5.3 Instant</span>
+      <span><span class="swatch" style="background:var(--signal)"></span>GPT-5.5 Instant</span>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><span class="num">03</span><h2>Pricing &amp; Availability</h2></div>
+    <div class="split">
+      <div class="price-tbl">
+        <div class="row"><span class="t">API input</span><span class="p">$5.00 / M tokens</span></div>
+        <div class="row"><span class="t">API output</span><span class="p">$30.00 / M tokens</span></div>
+      </div>
+      <div class="callout">
+        <h4>Availability</h4>
+        <p>Rolled out May 5, 2026 as the default ChatGPT model on web and app for all user tiers, including free and Go users.</p>
+        <h4>Comparison</h4>
+        <p>GPT-5.5 Instant replaces GPT-5.3 Instant, offering 52.5% fewer hallucinations, stronger math (AIME 2025 81.2 vs 65.4), and better memory, though its agentic index and long-context scores remain below the top GPT-5.5 variants.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><span class="num">04</span><h2>Timeline</h2></div>
+    <div class="tl stagger">
+      <div class="tl-item" style="--i:0"><div class="d">2026-05-24</div><p>Coverage highlights GPT-5.5 features including the agent shift, File Library, Shopping 2.0, and Images 2.0.</p></div>
+      <div class="tl-item" style="--i:1"><div class="d">2026-05-06</div><p>Media breakdowns explain the GPT-5.5 Instant rollout, covering factuality, concise answers, and memory sources.</p></div>
+      <div class="tl-item" style="--i:2"><div class="d">2026-05-05</div><p>OpenAI sets GPT-5.5 Instant as the new default ChatGPT model on web and app, replacing GPT-5.3 Instant for all user tiers.</p></div>
+      <div class="tl-item" style="--i:3"><div class="d">2026-03-03</div><p>GPT-5.3 Instant launched as the prior default model, with the model selector removed for free and Go users.</p></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><span class="num">05</span><h2>Entities</h2></div>
+    <div class="ent stagger">
+      <div class="ent-card" style="--i:0"><div class="ty">Organization</div><div class="nm">OpenAI</div><div class="rl">Developer of GPT-5.5 Instant and ChatGPT</div></div>
+      <div class="ent-card" style="--i:1"><div class="ty">Organization</div><div class="nm">ChatGPT</div><div class="rl">Product receiving the new default model</div></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><span class="num">06</span><h2>Related Coverage</h2></div>
+    <div class="src">
+      <a href="https://www.youtube.com/watch?v=ozRhJFLYRyg"><div><div class="ti">ChatGPT Just Changed Its Default Model: GPT-5.5 Instant Explained</div><div class="pub">YouTube</div></div><div class="dt">2026-05-06</div></a>
+      <a href="https://www.reddit.com/r/AIGuild/comments/1t4xfxo/openai_made_gpt55_instant_the_new_default_chatgpt"><div><div class="ti">OpenAI Made GPT-5.5 Instant the New Default ChatGPT Model</div><div class="pub">Reddit</div></div><div class="dt">—</div></a>
+      <a href="https://techcrunch.com/2026/05/05/openai-releases-gpt-5-5-instant-a-new-default-model-for-chatgpt"><div><div class="ti">OpenAI releases GPT-5.5 Instant, a new default model for ChatGPT</div><div class="pub">TechCrunch</div></div><div class="dt">2026-05-05</div></a>
+      <a href="https://llm-stats.com/models/gpt-5.5-instant"><div><div class="ti">GPT-5.5 Instant Benchmarks, Pricing &amp; Context Window</div><div class="pub">LLM-Stats</div></div><div class="dt">—</div></a>
+      <a href="https://actgsys.com/en/blog/gpt-5-5-instant-chatgpt-default-model-sme-2026-05"><div><div class="ti">GPT-5.5 Instant Becomes ChatGPT's New Default (May 2026)</div><div class="pub">ACTGSYS</div></div><div class="dt">—</div></a>
+      <a href="https://designforonline.com/ai-models/openai-gpt-5-5-instant-may-2026"><div><div class="ti">GPT-5.5 Instant (May 2026) Review | Pricing, Benchmarks &amp; Capabilities</div><div class="pub">Design for Online</div></div><div class="dt">—</div></a>
+      <a href="https://www.reddit.com/r/OpenAI/comments/1sth260/gpt_55_might_be_released_today"><div><div class="ti">GPT 5.5 might be released today?</div><div class="pub">Reddit</div></div><div class="dt">—</div></a>
+      <a href="https://www.youtube.com/watch?v=Dg2FC4wNuyE"><div><div class="ti">ChatGPT 5.5: 10 Features You're Not Using But Should Be</div><div class="pub">YouTube</div></div><div class="dt">2026-05-24</div></a>
+      <a href="https://www.usaii.org/ai-insights/openai-swaps-chatgpt-core-model-a-closer-look-at-gpt-5-5-instant"><div><div class="ti">OpenAI Swaps ChatGPT's Core Model: A Closer Look at GPT-5.5 Instant</div><div class="pub">USAII</div></div><div class="dt">2026-05-05</div></a>
+      <a href="https://www.mindstudio.ai/blog/gpt-5-5-instant-vs-gpt-5-3-instant-free-tier-upgrade"><div><div class="ti">GPT 5.5 Instant vs. GPT 5.3 Instant: Free Tier Just Got a Frontier-Level Upgrade</div><div class="pub">MindStudio</div></div><div class="dt">—</div></a>
+      <a href="https://www.facebook.com/groups/marketingngrowth/posts/992284413256312"><div><div class="ti">Gpt-5.5 instant default in chatgpt with improved reasoning</div><div class="pub">Facebook</div></div><div class="dt">—</div></a>
+    </div>
+  </section>
+
+  <footer>End of spec sheet · GPT-5.5 Instant · ChatGPT default since 2026-05-05</footer>
+
+</div>
+</body>
+</html>

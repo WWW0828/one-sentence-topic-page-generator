@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!-- direction: Alpine lake diplomacy — Lac Léman blues, glacial whites, topographic contour lines, refined Swiss-French editorial -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>52nd G7 Summit · Évian-les-Bains 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;700&family=Archivo+Narrow:wght@500;600&display=swap');
+
+:root{
+  --lake:#0d3b4f;
+  --deep:#082633;
+  --glacier:#dce9ec;
+  --mist:#f3f7f7;
+  --aqua:#3ea3ac;
+  --gold:#c89b3c;
+  --foam:#a9cdd1;
+  --ink:#0c1f27;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Archivo',sans-serif;
+  color:var(--mist);
+  background:var(--deep);
+  background-image:
+    repeating-linear-gradient(0deg,transparent 0 38px,rgba(62,163,172,.04) 38px 39px),
+    radial-gradient(120% 80% at 80% -10%,rgba(62,163,172,.28),transparent 60%),
+    linear-gradient(160deg,var(--lake),var(--deep) 70%);
+  background-attachment:fixed;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+.wrap{max-width:1200px;margin:0 auto;padding:0 6vw}
+
+/* contour atmosphere */
+.contours{position:fixed;inset:0;z-index:0;opacity:.18;pointer-events:none;
+  background:
+   radial-gradient(60% 40% at 30% 20%,transparent 38%,var(--aqua) 39% 39.4%,transparent 40%),
+   radial-gradient(50% 36% at 32% 22%,transparent 50%,var(--foam) 51% 51.3%,transparent 52%),
+   radial-gradient(72% 48% at 70% 85%,transparent 44%,var(--aqua) 45% 45.4%,transparent 46%),
+   radial-gradient(60% 40% at 72% 87%,transparent 56%,var(--foam) 57% 57.3%,transparent 58%);
+}
+.wrap{position:relative;z-index:1}
+
+/* stagger */
+.stagger>*{opacity:0;transform:translateY(22px);
+  animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards;
+  animation-delay:calc(var(--i,0)*90ms);}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* HERO */
+header{padding:9vh 0 5vh}
+.kicker{font-family:'Archivo Narrow';letter-spacing:.4em;text-transform:uppercase;
+  font-size:.78rem;color:var(--foam);display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap}
+.badge{background:var(--gold);color:var(--deep);padding:.25em .9em;border-radius:2px;
+  font-weight:700;letter-spacing:.18em}
+h1{font-family:'Fraunces';font-weight:600;font-size:clamp(2.6rem,8vw,6.2rem);
+  line-height:.96;margin:.4em 0 .3em;color:var(--glacier);
+  text-shadow:0 2px 30px rgba(0,0,0,.4)}
+h1 em{font-style:italic;color:var(--aqua)}
+.lead{max-width:54ch;font-size:1.12rem;color:#cfe2e4}
+.updated{font-family:'Archivo Narrow';font-size:.8rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--foam);opacity:.75;margin-top:1.6rem}
+
+/* status */
+.status{display:inline-flex;align-items:center;gap:.7rem;margin-top:2rem;
+  border:1px solid var(--aqua);border-radius:40px;padding:.5em 1.4em;
+  font-family:'Archivo Narrow';letter-spacing:.25em;text-transform:uppercase;
+  font-size:.82rem;color:var(--glacier);background:rgba(62,163,172,.1)}
+.status::before{content:"";width:9px;height:9px;border-radius:50%;
+  background:var(--gold);box-shadow:0 0 0 0 var(--gold);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(200,155,60,.6)}70%{box-shadow:0 0 0 12px transparent}100%{box-shadow:0 0 0 0 transparent}}
+
+section{padding:5vh 0}
+.htitle{font-family:'Archivo Narrow';text-transform:uppercase;letter-spacing:.3em;
+  font-size:.9rem;color:var(--gold);margin-bottom:2rem;
+  display:flex;align-items:center;gap:1rem}
+.htitle::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--aqua),transparent)}
+
+/* FACTS */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;
+  background:rgba(169,205,209,.18);border:1px solid rgba(169,205,209,.18)}
+.fact{background:var(--deep);padding:1.6rem 1.4rem;transition:background .3s}
+.fact:hover{background:#0a2d3c}
+.fact .lab{font-family:'Archivo Narrow';text-transform:uppercase;letter-spacing:.22em;
+  font-size:.72rem;color:var(--aqua);margin-bottom:.5rem}
+.fact .val{font-family:'Fraunces';font-size:1.18rem;color:var(--glacier);line-height:1.35}
+
+/* AGENDA chips */
+.agenda{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.4rem}
+.agenda span{border:1px solid var(--foam);border-radius:30px;padding:.4em 1.1em;
+  font-size:.9rem;color:var(--glacier)}
+
+/* TIMELINE */
+.spine{position:relative;padding-left:2.4rem}
+.spine::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;
+  background:linear-gradient(var(--aqua),transparent)}
+.tl{position:relative;padding:0 0 2rem 0}
+.tl::before{content:"";position:absolute;left:-2.4rem;top:7px;width:16px;height:16px;
+  border-radius:50%;background:var(--deep);border:2px solid var(--gold)}
+.tl .d{font-family:'Archivo Narrow';letter-spacing:.2em;color:var(--aqua);
+  font-size:.82rem;text-transform:uppercase}
+.tl p{color:#cfe2e4;max-width:60ch}
+
+/* ENTITIES */
+.ents{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
+.ent{border:1px solid rgba(169,205,209,.22);border-radius:4px;padding:1.3rem;
+  background:rgba(13,59,79,.45);transition:transform .25s,border-color .25s}
+.ent:hover{transform:translateY(-4px);border-color:var(--aqua)}
+.ent .t{font-family:'Archivo Narrow';font-size:.68rem;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--gold)}
+.ent .n{font-family:'Fraunces';font-size:1.3rem;color:var(--glacier);margin:.3rem 0}
+.ent .r{font-size:.92rem;color:var(--foam)}
+
+/* SOURCES */
+.src{display:block;text-decoration:none;color:inherit;border-bottom:1px solid rgba(169,205,209,.16);
+  padding:1.1rem 0;display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  transition:padding-left .25s,color .25s}
+.src:hover{padding-left:1rem;color:var(--aqua)}
+.src .st{font-family:'Fraunces';font-size:1.05rem;flex:1;min-width:240px}
+.src .sp{font-family:'Archivo Narrow';font-size:.78rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--foam);white-space:nowrap}
+
+footer{padding:6vh 0 4vh;text-align:center;color:var(--foam);font-family:'Archivo Narrow';
+  letter-spacing:.25em;text-transform:uppercase;font-size:.74rem;opacity:.7}
+
+@media(max-width:600px){.src{flex-direction:column;gap:.3rem}}
+</style>
+</head>
+<body>
+<div class="contours"></div>
+<div class="wrap">
+
+<header class="stagger">
+  <div class="kicker" style="--i:0">
+    <span class="badge">Political</span>
+    <span>France · 2026 G7 Presidency</span>
+  </div>
+  <h1 style="--i:1">52nd G7 Summit<br><em>Évian-les-Bains</em></h1>
+  <p class="lead" style="--i:2">The 52nd G7 Summit takes place from June 15 to 17, 2026, in the French lakeside resort of Évian-les-Bains, hosted by French President Emmanuel Macron under France's 2026 G7 Presidency. The agenda spans geopolitical challenges, peace and security for Ukraine and Europe, the situation in the Middle East, trade, and climate action. With the venue near the Swiss border, French and Swiss authorities have imposed tight security and border restrictions ahead of expected protests.</p>
+  <div class="status" style="--i:3">Upcoming · in 2 days</div>
+  <div class="updated" style="--i:4">Last updated · 13 June 2026</div>
+</header>
+
+<section>
+  <div class="htitle">Summit Briefing</div>
+  <div class="facts stagger">
+    <div class="fact" style="--i:0"><div class="lab">Dates</div><div class="val">June 15–17, 2026</div></div>
+    <div class="fact" style="--i:1"><div class="lab">Location</div><div class="val">Évian-les-Bains, France · Hotel Royal venue, near the Swiss border</div></div>
+    <div class="fact" style="--i:2"><div class="lab">Host</div><div class="val">President Emmanuel Macron, under France's 2026 G7 Presidency</div></div>
+    <div class="fact" style="--i:3"><div class="lab">Edition</div><div class="val">52nd G7 Summit</div></div>
+    <div class="fact" style="--i:4"><div class="lab">Agenda Highlights</div><div class="val">Geopolitics, peace &amp; security for Ukraine and Europe, the Middle East, trade and climate</div></div>
+    <div class="fact" style="--i:5"><div class="lab">Security</div><div class="val">France &amp; Switzerland impose a week of pandemic-like border restrictions amid fears of violent protests</div></div>
+  </div>
+  <div class="agenda">
+    <span>Geopolitical challenges</span>
+    <span>Peace &amp; security for Ukraine</span>
+    <span>The Middle East</span>
+    <span>Trade</span>
+    <span>Climate action</span>
+  </div>
+</section>
+
+<section>
+  <div class="htitle">Road to Évian · Timeline</div>
+  <div class="spine stagger">
+    <div class="tl" style="--i:0"><div class="d">June 15, 2026</div><p>The 52nd G7 Summit opens in Évian-les-Bains, France, with leaders including U.S. President Donald Trump attending; runs through June 17.</p></div>
+    <div class="tl" style="--i:1"><div class="d">June 11, 2026</div><p>Global leaders prepare to gather as security is heightened at the Swiss-French border ahead of the summit.</p></div>
+    <div class="tl" style="--i:2"><div class="d">June 9, 2026</div><p>Shops in Geneva boarded up ahead of expected protests; French and Swiss authorities prepare pandemic-like border restrictions.</p></div>
+    <div class="tl" style="--i:3"><div class="d">May 19, 2026</div><p>G7 Finance Ministers' and Central Bank Governors' Communiqué issued during France's presidency.</p></div>
+    <div class="tl" style="--i:4"><div class="d">May 18, 2026</div><p>Évian-les-Bains makes final preparations, with the Hotel Royal confirmed as the summit venue.</p></div>
+    <div class="tl" style="--i:5"><div class="d">March 30, 2026</div><p>G7 Energy and Finance Ministers' and Central Bank Governors' communiqué issued.</p></div>
+    <div class="tl" style="--i:6"><div class="d">March 25, 2026</div><p>G7 Foreign Ministers' Meeting held (March 25–29, 2026).</p></div>
+    <div class="tl" style="--i:7"><div class="d">January 27, 2026</div><p>Minister Roland Lescure convenes the first G7 Finance Ministers' Meeting under France's 2026 G7 Presidency.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="htitle">At the Table · Key Players</div>
+  <div class="ents stagger">
+    <div class="ent" style="--i:0"><div class="t">Person</div><div class="n">Emmanuel Macron</div><div class="r">President of France, summit host</div></div>
+    <div class="ent" style="--i:1"><div class="t">Person</div><div class="n">Donald Trump</div><div class="r">U.S. President attending the summit</div></div>
+    <div class="ent" style="--i:2"><div class="t">Person</div><div class="n">Roland Lescure</div><div class="r">French Finance Minister convening G7 finance meetings</div></div>
+    <div class="ent" style="--i:3"><div class="t">Organisation</div><div class="n">France</div><div class="r">Host country and 2026 G7 Presidency</div></div>
+    <div class="ent" style="--i:4"><div class="t">Organisation</div><div class="n">Switzerland</div><div class="r">Neighboring country coordinating security at the border</div></div>
+    <div class="ent" style="--i:5"><div class="t">Location</div><div class="n">Évian-les-Bains</div><div class="r">Host city of the summit</div></div>
+    <div class="ent" style="--i:6"><div class="t">Location</div><div class="n">Hotel Royal</div><div class="r">Summit venue</div></div>
+    <div class="ent" style="--i:7"><div class="t">Organisation</div><div class="n">Group of Seven (G7)</div><div class="r">Leading industrialized economies meeting at the summit</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="htitle">Related Coverage</div>
+  <div class="stagger">
+    <a class="src" style="--i:0" href="https://www.sciencespo.fr/students/fr/evenements/spnu-evian-2026-g7-as-another-shot-at-multilateralism"><span class="st">SPNU — Évian 2026: G7 as Another Shot at Multilateralism?</span><span class="sp">sciencespo.fr</span></a>
+    <a class="src" style="--i:1" href="https://www.instagram.com/p/DVqkek2iDrX"><span class="st">In June 2026, the 52nd G7 Summit will take place in Évian-les-Bains</span><span class="sp">instagram.com</span></a>
+    <a class="src" style="--i:2" href="https://www.ioe-emp.org/events/event/g7-summit-evian-france"><span class="st">G7 Summit, Evian-les-Bains (France)</span><span class="sp">ioe-emp.org</span></a>
+    <a class="src" style="--i:3" href="https://www.eda.admin.ch/en/g7-summit-in-evian"><span class="st">G7 summit in Évian</span><span class="sp">eda.admin.ch</span></a>
+    <a class="src" style="--i:4" href="https://www.businesseurope.eu/events/2026-g7-summit"><span class="st">2026 G7 Summit — BusinessEurope</span><span class="sp">businesseurope.eu</span></a>
+    <a class="src" style="--i:5" href="https://focus2030.org/en/g7-france-2026-focus-on-development-issues-understanding-the-challenges-keeping-up-with-the-latest-news"><span class="st">G7 France 2026: focus on development matters</span><span class="sp">focus2030.org</span></a>
+    <a class="src" style="--i:6" href="https://www.consilium.europa.eu/en/meetings/international-summit/2026/06/15-17"><span class="st">G7 summit, Evian, France, 15–17 June 2026</span><span class="sp">consilium.europa.eu</span></a>
+    <a class="src" style="--i:7" href="https://sdg.iisd.org/events/g7-summit-2026"><span class="st">G7 Summit 2026 — SDG Knowledge Hub</span><span class="sp">sdg.iisd.org</span></a>
+    <a class="src" style="--i:8" href="https://en.wikipedia.org/wiki/52nd_G7_summit"><span class="st">52nd G7 summit — Wikipedia</span><span class="sp">en.wikipedia.org</span></a>
+    <a class="src" style="--i:9" href="https://www.mofa.go.jp/ecm/ec/pagewe_000001_00315.html"><span class="st">G7 Summit 2026</span><span class="sp">mofa.go.jp</span></a>
+    <a class="src" style="--i:10" href="https://www.youtube.com/watch?v=BhMTB616TqA"><span class="st">G7 Summit 2026: Global Leaders To Attend Historic Event, Security Heightened</span><span class="sp">youtube.com · 11 Jun 2026</span></a>
+    <a class="src" style="--i:11" href="https://www.reutersconnect.com/item/evian-les-bains-makes-final-preparations-ahead-of-upcoming-g7-summit/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX01UMUFOQURMMDAwVFhWSzVa"><span class="st">Evian-les-Bains makes final preparations ahead of upcoming G7 summit</span><span class="sp">reutersconnect.com</span></a>
+    <a class="src" style="--i:12" href="https://www.tresor.economie.gouv.fr/tresor-international/france-s-g7-presidency-in-2026"><span class="st">France's G7 Presidency in 2026</span><span class="sp">tresor.economie.gouv.fr</span></a>
+    <a class="src" style="--i:13" href="https://www.iea.org/about/international-collaborations/g7/france-2026"><span class="st">France 2026 — About — IEA</span><span class="sp">iea.org</span></a>
+    <a class="src" style="--i:14" href="https://g7.utoronto.ca/summit/2026evian/road.html"><span class="st">The Road to France's 2026 G7 Evian Summit</span><span class="sp">g7.utoronto.ca</span></a>
+    <a class="src" style="--i:15" href="https://www.washingtonpost.com/business/2026/06/11/switzerland-france-g7-border-security-trump/6412e21e-6558-11f1-bdd4-805ebb99a693_story.html"><span class="st">G7 summit at Swiss-French border brings tight security in case violent protests occur</span><span class="sp">washingtonpost.com · 11 Jun 2026</span></a>
+    <a class="src" style="--i:16" href="https://www.swissinfo.ch/eng/swiss-democracy/could-the-2026-g7-cause-similar-problems-for-geneva-as-in-2003/91552582"><span class="st">Could the 2026 G7 cause similar problems for Geneva as in 2003?</span><span class="sp">swissinfo.ch</span></a>
+  </div>
+</section>
+
+<footer>Lac Léman · G7 Évian 2026 · An editorial briefing</footer>
+</div>
+</body>
+</html>

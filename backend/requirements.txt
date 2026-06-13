@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+anthropic
+google-genai
+tavily-python
+httpx
+pydantic
+jinja2
+python-dotenv
